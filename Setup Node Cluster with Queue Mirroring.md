@@ -5,7 +5,7 @@ This guide details the process to setup a node cluster with a mirrored queue (hi
 
 - Install Erlang and RabbitMQ Server as Administrator
 - Run RabbitMQ Service -start from Start Menu
-- Confirm the RabbitMQ service description is appearing in Services. If it is blank, the install did not complete succesfully.
+- Confirm the RabbitMQ service description is appearing in Services. If it is blank, the install did not finish successfully.
 - Navigate to C:\Program Files\RabbitMQ Server\rabbitmq_server-x.x.xx\sbin
 - Check the value of the *%HOMEDRIVE%* environmental variable. If not set to a local path, set the location to a local drive:
 
@@ -19,9 +19,17 @@ This guide details the process to setup a node cluster with a mirrored queue (hi
 
 - Enable RabbitMQ Management UI:
 > rabbitmq-plugins enable rabbitmq_management
-sc stop RabbitMQ
-sc start RabbitMQ
+ 
+>sc stop RabbitMQ
 
+>sc start RabbitMQ
+
+- Login to the Management UI via
+
+> http://localhost:15672/#/
+
+- Navigate to Queues > Add Queue
+- Enter a queue name and select "Add Queue"
 - Repeat the above steps to setup RabbitMQ nodes on all necessary machines
 
 ## Setup a Cluster 
@@ -70,7 +78,7 @@ sc start RabbitMQ
 - Navigate to Admin >Policies > Add Policy
 - Enter a name for the policy
 - Enter the queue name under "Pattern"
-- Set the definion to "HA" with key "All"
+- Set the definition to "HA" with key "All"
 - Select "Add Policy"
 - From each secondary node, synchronize the queue:
 
